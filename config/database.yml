@@ -1,0 +1,28 @@
+<%
+  # Worktree-aware DB naming. Each worktree (and the main checkout) gets its own
+  # DB named after the directory, so concurrent tasks on the same VM don't
+  # collide. The factory creates these DBs from a migrated template.
+  dir    = File.basename(Rails.root.to_s)
+  suffix = dir.gsub(/[^a-z0-9]/i, '_').downcase
+  env    = ENV['DATABASE_NAME']  # factory runner may pin a specific DB name
+%>
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: /var/run/postgresql
+
+development:
+  <<: *default
+  database: <%= env || "#{suffix}_development" %>
+
+test:
+  <<: *default
+  database: <%= env || "#{suffix}_test" %>
+
+production:
+  <<: *default
+  database: todo_factory_demo_production
+  username: todo_factory_demo
+  password: <%= ENV["TODO_FACTORY_DEMO_DATABASE_PASSWORD"] %>

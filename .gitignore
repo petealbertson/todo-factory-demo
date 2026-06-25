@@ -1,0 +1,14 @@
+/.bundle
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+/config/master.key
+/config/credentials/*.key
+.env*
+*.local
+node_modules/
+yarn-error.log
+coverage/
