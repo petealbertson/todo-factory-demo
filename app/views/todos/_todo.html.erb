@@ -7,6 +7,10 @@
   <div>
     <strong>Completed:</strong>
     <%= todo.completed %>
+    <%= button_to "Toggle complete", toggle_todo_path(todo),
+          method: :patch,
+          form_class: "toggle-complete",
+          aria: { label: "Toggle complete for #{todo.title}" } %>
   </div>
 
 </div>
