@@ -1,0 +1,96 @@
+name: Factory Dispatch
+
+# Single workflow dispatched by the Fabrica control plane.
+# Legacy label-driven workflows still exist during the migration period and
+# handle state transitions triggered by labels; this workflow carries the
+# run context when the control plane explicitly dispatches a task.
+#
+# Inputs are passed as strings; the dispatch token is single-use and
+# short-lived. The runner exchanges it for the run's callback token at startup.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Fabrica run id"
+        required: true
+        type: string
+      kind:
+        description: "Task kind"
+        required: true
+        type: choice
+        options:
+          - triage
+          - implement
+          - review
+          - fix
+          - teardown
+      target:
+        description: "Issue or PR number"
+        required: true
+        type: string
+      target_type:
+        description: "issue or pr"
+        required: true
+        type: choice
+        options:
+          - issue
+          - pr
+      mode:
+        description: "pipeline or point"
+        required: true
+        type: choice
+        options:
+          - pipeline
+          - point
+      round:
+        description: "Current review round"
+        required: true
+        type: string
+      max_rounds:
+        description: "Maximum review rounds"
+        required: true
+        type: string
+      factory_app_url:
+        description: "Fabrica control plane URL"
+        required: true
+        type: string
+      dispatch_token:
+        description: "Single-use token to exchange for the callback token"
+        required: true
+        type: string
+      git_author_name:
+        description: "Git user.name for brokered commits"
+        required: true
+        type: string
+      git_author_email:
+        description: "Git user.email for brokered commits"
+        required: true
+        type: string
+
+concurrency:
+  group: factory-dispatch-${{ github.event.inputs.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  factory:
+    runs-on: [self-hosted, linux, X64]
+    timeout-minutes: 30
+    steps:
+      - name: Dispatch target context
+        env:
+          FACTORY_RUN_ID: ${{ github.event.inputs.run_id }}
+          FACTORY_KIND: ${{ github.event.inputs.kind }}
+          FACTORY_TARGET: ${{ github.event.inputs.target }}
+          FACTORY_TARGET_TYPE: ${{ github.event.inputs.target_type }}
+          FACTORY_MODE: ${{ github.event.inputs.mode }}
+          FACTORY_ROUND: ${{ github.event.inputs.round }}
+          FACTORY_MAX_ROUNDS: ${{ github.event.inputs.max_rounds }}
+          FACTORY_APP_URL: ${{ github.event.inputs.factory_app_url }}
+          FACTORY_DISPATCH_TOKEN: ${{ github.event.inputs.dispatch_token }}
+          FACTORY_GIT_AUTHOR_NAME: ${{ github.event.inputs.git_author_name }}
+          FACTORY_GIT_AUTHOR_EMAIL: ${{ github.event.inputs.git_author_email }}
+          GITHUB_ACTIONS: "true"
+        run: |
+          echo "::add-mask::${FACTORY_DISPATCH_TOKEN}"
+          cd ~/factory
+          bash run.sh
