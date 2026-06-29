@@ -18,10 +18,10 @@
     <%= button_to "Delete", todo, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   </div>
 
-  <% if todo.due_on.present? %>
+  <% if todo.due_date.present? %>
     <div>
       <strong>Due:</strong>
-      <%= todo.due_on %>
+      <%= todo.due_date %>
       <% if todo.overdue? %>
         <em>(overdue)</em>
       <% end %>
