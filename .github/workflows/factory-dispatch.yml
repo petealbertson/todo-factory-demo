@@ -67,6 +67,10 @@ on:
         description: "Git user.email for brokered commits"
         required: true
         type: string
+      runner_labels:
+        description: "JSON array of runner labels, e.g. [\"self-hosted\",\"owner/repo\"]"
+        required: true
+        type: string
 
 concurrency:
   group: factory-dispatch-${{ github.event.inputs.run_id }}
@@ -74,7 +78,7 @@ concurrency:
 
 jobs:
   factory:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: ${{ fromJSON(github.event.inputs.runner_labels) }}
     timeout-minutes: 30
     steps:
       - name: Dispatch target context
