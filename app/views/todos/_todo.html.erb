@@ -9,4 +9,9 @@
     <%= todo.completed %>
   </div>
 
+  <div>
+    <strong>Created:</strong>
+    <%= time_ago_in_words(todo.created_at) %> ago
+  </div>
+
 </div>
