@@ -13,4 +13,8 @@
           aria: { label: "Toggle complete for #{todo.title}" } %>
   </div>
 
+  <div>
+    <%= button_to "Delete", todo, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+
 </div>
