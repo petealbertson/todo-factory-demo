@@ -1,1 +1,96 @@
-bmFtZTogRmFjdG9yeSBEaXNwYXRjaAoKIyBTaW5nbGUgd29ya2Zsb3cgZGlzcGF0Y2hlZCBieSB0aGUgRmFicmljYSBjb250cm9sIHBsYW5lLgojIExlZ2FjeSBsYWJlbC1kcml2ZW4gd29ya2Zsb3dzIHN0aWxsIGV4aXN0IGR1cmluZyB0aGUgbWlncmF0aW9uIHBlcmlvZCBhbmQKIyBoYW5kbGUgc3RhdGUgdHJhbnNpdGlvbnMgdHJpZ2dlcmVkIGJ5IGxhYmVsczsgdGhpcyB3b3JrZmxvdyBjYXJyaWVzIHRoZQojIHJ1biBjb250ZXh0IHdoZW4gdGhlIGNvbnRyb2wgcGxhbmUgZXhwbGljaXRseSBkaXNwYXRjaGVzIGEgdGFzay4KIwojIElucHV0cyBhcmUgcGFzc2VkIGFzIHN0cmluZ3M7IHRoZSBkaXNwYXRjaCB0b2tlbiBpcyBzaW5nbGUtdXNlIGFuZAojIHNob3J0LWxpdmVkLiBUaGUgcnVubmVyIGV4Y2hhbmdlcyBpdCBmb3IgdGhlIHJ1bidzIGNhbGxiYWNrIHRva2VuIGF0IHN0YXJ0dXAuCm9uOgogIHdvcmtmbG93X2Rpc3BhdGNoOgogICAgaW5wdXRzOgogICAgICBydW5faWQ6CiAgICAgICAgZGVzY3JpcHRpb246ICJGYWJyaWNhIHJ1biBpZCIKICAgICAgICByZXF1aXJlZDogdHJ1ZQogICAgICAgIHR5cGU6IHN0cmluZwogICAgICBraW5kOgogICAgICAgIGRlc2NyaXB0aW9uOiAiVGFzayBraW5kIgogICAgICAgIHJlcXVpcmVkOiB0cnVlCiAgICAgICAgdHlwZTogY2hvaWNlCiAgICAgICAgb3B0aW9uczoKICAgICAgICAgIC0gdHJpYWdlCiAgICAgICAgICAtIGltcGxlbWVudAogICAgICAgICAgLSByZXZpZXcKICAgICAgICAgIC0gZml4CiAgICAgICAgICAtIHRlYXJkb3duCiAgICAgIHRhcmdldDoKICAgICAgICBkZXNjcmlwdGlvbjogIklzc3VlIG9yIFBSIG51bWJlciIKICAgICAgICByZXF1aXJlZDogdHJ1ZQogICAgICAgIHR5cGU6IHN0cmluZwogICAgICB0YXJnZXRfdHlwZToKICAgICAgICBkZXNjcmlwdGlvbjogImlzc3VlIG9yIHByIgogICAgICAgIHJlcXVpcmVkOiB0cnVlCiAgICAgICAgdHlwZTogY2hvaWNlCiAgICAgICAgb3B0aW9uczoKICAgICAgICAgIC0gaXNzdWUKICAgICAgICAgIC0gcHIKICAgICAgbW9kZToKICAgICAgICBkZXNjcmlwdGlvbjogInBpcGVsaW5lIG9yIHBvaW50IgogICAgICAgIHJlcXVpcmVkOiB0cnVlCiAgICAgICAgdHlwZTogY2hvaWNlCiAgICAgICAgb3B0aW9uczoKICAgICAgICAgIC0gcGlwZWxpbmUKICAgICAgICAgIC0gcG9pbnQKICAgICAgcm91bmQ6CiAgICAgICAgZGVzY3JpcHRpb246ICJDdXJyZW50IHJldmlldyByb3VuZCIKICAgICAgICByZXF1aXJlZDogdHJ1ZQogICAgICAgIHR5cGU6IHN0cmluZwogICAgICBtYXhfcm91bmRzOgogICAgICAgIGRlc2NyaXB0aW9uOiAiTWF4aW11bSByZXZpZXcgcm91bmRzIgogICAgICAgIHJlcXVpcmVkOiB0cnVlCiAgICAgICAgdHlwZTogc3RyaW5nCiAgICAgIGZhY3RvcnlfYXBwX3VybDoKICAgICAgICBkZXNjcmlwdGlvbjogIkZhYnJpY2EgY29udHJvbCBwbGFuZSBVUkwiCiAgICAgICAgcmVxdWlyZWQ6IHRydWUKICAgICAgICB0eXBlOiBzdHJpbmcKICAgICAgZGlzcGF0Y2hfdG9rZW46CiAgICAgICAgZGVzY3JpcHRpb246ICJTaW5nbGUtdXNlIHRva2VuIHRvIGV4Y2hhbmdlIGZvciB0aGUgY2FsbGJhY2sgdG9rZW4iCiAgICAgICAgcmVxdWlyZWQ6IHRydWUKICAgICAgICB0eXBlOiBzdHJpbmcKICAgICAgZ2l0X2F1dGhvcl9uYW1lOgogICAgICAgIGRlc2NyaXB0aW9uOiAiR2l0IHVzZXIubmFtZSBmb3IgYnJva2VyZWQgY29tbWl0cyIKICAgICAgICByZXF1aXJlZDogdHJ1ZQogICAgICAgIHR5cGU6IHN0cmluZwogICAgICBnaXRfYXV0aG9yX2VtYWlsOgogICAgICAgIGRlc2NyaXB0aW9uOiAiR2l0IHVzZXIuZW1haWwgZm9yIGJyb2tlcmVkIGNvbW1pdHMiCiAgICAgICAgcmVxdWlyZWQ6IHRydWUKICAgICAgICB0eXBlOiBzdHJpbmcKCmNvbmN1cnJlbmN5OgogIGdyb3VwOiBmYWN0b3J5LWRpc3BhdGNoLSR7eyBnaXRodWIuZXZlbnQuaW5wdXRzLnJ1bl9pZCB9fQogIGNhbmNlbC1pbi1wcm9ncmVzczogZmFsc2UKCmpvYnM6CiAgZmFjdG9yeToKICAgIHJ1bnMtb246IFtzZWxmLWhvc3RlZCwgbGludXgsIFg2NF0KICAgIHRpbWVvdXQtbWludXRlczogMzAKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IERpc3BhdGNoIHRhcmdldCBjb250ZXh0CiAgICAgICAgZW52OgogICAgICAgICAgRkFDVE9SWV9SVU5fSUQ6ICR7eyBnaXRodWIuZXZlbnQuaW5wdXRzLnJ1bl9pZCB9fQogICAgICAgICAgRkFDVE9SWV9LSU5EOiAke3sgZ2l0aHViLmV2ZW50LmlucHV0cy5raW5kIH19CiAgICAgICAgICBGQUNUT1JZX1RBUkdFVDogJHt7IGdpdGh1Yi5ldmVudC5pbnB1dHMudGFyZ2V0IH19CiAgICAgICAgICBGQUNUT1JZX1RBUkdFVF9UWVBFOiAke3sgZ2l0aHViLmV2ZW50LmlucHV0cy50YXJnZXRfdHlwZSB9fQogICAgICAgICAgRkFDVE9SWV9NT0RFOiAke3sgZ2l0aHViLmV2ZW50LmlucHV0cy5tb2RlIH19CiAgICAgICAgICBGQUNUT1JZX1JPVU5EOiAke3sgZ2l0aHViLmV2ZW50LmlucHV0cy5yb3VuZCB9fQogICAgICAgICAgRkFDVE9SWV9NQVhfUk9VTkRTOiAke3sgZ2l0aHViLmV2ZW50LmlucHV0cy5tYXhfcm91bmRzIH19CiAgICAgICAgICBGQUNUT1JZX0FQUF9VUkw6ICR7eyBnaXRodWIuZXZlbnQuaW5wdXRzLmZhY3RvcnlfYXBwX3VybCB9fQogICAgICAgICAgRkFDVE9SWV9ESVNQQVRDSF9UT0tFTjogJHt7IGdpdGh1Yi5ldmVudC5pbnB1dHMuZGlzcGF0Y2hfdG9rZW4gfX0KICAgICAgICAgIEZBQ1RPUllfR0lUX0FVVEhPUl9OQU1FOiAke3sgZ2l0aHViLmV2ZW50LmlucHV0cy5naXRfYXV0aG9yX25hbWUgfX0KICAgICAgICAgIEZBQ1RPUllfR0lUX0FVVEhPUl9FTUFJTDogJHt7IGdpdGh1Yi5ldmVudC5pbnB1dHMuZ2l0X2F1dGhvcl9lbWFpbCB9fQogICAgICAgICAgR0lUSFVCX0FDVElPTlM6ICJ0cnVlIgogICAgICAgIHJ1bjogfAogICAgICAgICAgZWNobyAiOjphZGQtbWFzazo6JHtGQUNUT1JZX0RJU1BBVENIX1RPS0VOfSIKICAgICAgICAgIGNkIH4vZmFjdG9yeQogICAgICAgICAgYmFzaCBydW4uc2gK
+name: Factory Dispatch
+
+# Single workflow dispatched by the Fabrica control plane.
+# Legacy label-driven workflows still exist during the migration period and
+# handle state transitions triggered by labels; this workflow carries the
+# run context when the control plane explicitly dispatches a task.
+#
+# Inputs are passed as strings; the dispatch token is single-use and
+# short-lived. The runner exchanges it for the run's callback token at startup.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Fabrica run id"
+        required: true
+        type: string
+      kind:
+        description: "Task kind"
+        required: true
+        type: choice
+        options:
+          - triage
+          - implement
+          - review
+          - fix
+          - teardown
+      target:
+        description: "Issue or PR number"
+        required: true
+        type: string
+      target_type:
+        description: "issue or pr"
+        required: true
+        type: choice
+        options:
+          - issue
+          - pr
+      mode:
+        description: "pipeline or point"
+        required: true
+        type: choice
+        options:
+          - pipeline
+          - point
+      round:
+        description: "Current review round"
+        required: true
+        type: string
+      max_rounds:
+        description: "Maximum review rounds"
+        required: true
+        type: string
+      factory_app_url:
+        description: "Fabrica control plane URL"
+        required: true
+        type: string
+      dispatch_token:
+        description: "Single-use token to exchange for the callback token"
+        required: true
+        type: string
+      git_author_name:
+        description: "Git user.name for brokered commits"
+        required: true
+        type: string
+      git_author_email:
+        description: "Git user.email for brokered commits"
+        required: true
+        type: string
+
+concurrency:
+  group: factory-dispatch-${{ github.event.inputs.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  factory:
+    runs-on: [self-hosted, linux, X64]
+    timeout-minutes: 30
+    steps:
+      - name: Dispatch target context
+        env:
+          FACTORY_RUN_ID: ${{ github.event.inputs.run_id }}
+          FACTORY_KIND: ${{ github.event.inputs.kind }}
+          FACTORY_TARGET: ${{ github.event.inputs.target }}
+          FACTORY_TARGET_TYPE: ${{ github.event.inputs.target_type }}
+          FACTORY_MODE: ${{ github.event.inputs.mode }}
+          FACTORY_ROUND: ${{ github.event.inputs.round }}
+          FACTORY_MAX_ROUNDS: ${{ github.event.inputs.max_rounds }}
+          FACTORY_APP_URL: ${{ github.event.inputs.factory_app_url }}
+          FACTORY_DISPATCH_TOKEN: ${{ github.event.inputs.dispatch_token }}
+          FACTORY_GIT_AUTHOR_NAME: ${{ github.event.inputs.git_author_name }}
+          FACTORY_GIT_AUTHOR_EMAIL: ${{ github.event.inputs.git_author_email }}
+          GITHUB_ACTIONS: "true"
+        run: |
+          echo "::add-mask::${FACTORY_DISPATCH_TOKEN}"
+          cd ~/factory
+          bash run.sh
