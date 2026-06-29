@@ -1,4 +1,4 @@
-<div id="<%= dom_id todo %>">
+<div id="<%= dom_id todo %>" class="<%= todo_due_classes(todo) %>">
   <div>
     <strong>Title:</strong>
     <%= todo.title %>
@@ -16,5 +16,15 @@
   <div>
     <%= button_to "Delete", todo, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   </div>
+
+  <% if todo.due_on.present? %>
+    <div>
+      <strong>Due:</strong>
+      <%= todo.due_on %>
+      <% if todo.overdue? %>
+        <em>(overdue)</em>
+      <% end %>
+    </div>
+  <% end %>
 
 </div>
