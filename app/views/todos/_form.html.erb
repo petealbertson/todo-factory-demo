@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= form.label :priority, style: "display: block" %>
+    <%= form.select :priority, options_for_select([%w[High high], %w[Medium medium], %w[Low low]], todo.priority) %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
