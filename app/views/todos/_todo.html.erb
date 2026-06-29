@@ -1,4 +1,4 @@
-<div id="<%= dom_id todo %>">
+<div id="<%= dom_id todo %>" class="<%= todo_due_classes(todo) %>">
   <div>
     <strong>Title:</strong>
     <%= todo.title %>
@@ -7,11 +7,24 @@
   <div>
     <strong>Completed:</strong>
     <%= todo.completed %>
+    <%= button_to "Toggle complete", toggle_todo_path(todo),
+          method: :patch,
+          form_class: "toggle-complete",
+          aria: { label: "Toggle complete for #{todo.title}" } %>
   </div>
 
   <div>
-    <strong>Created:</strong>
-    <%= time_ago_in_words(todo.created_at) %> ago
+    <%= button_to "Delete", todo, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   </div>
+
+  <% if todo.due_on.present? %>
+    <div>
+      <strong>Due:</strong>
+      <%= todo.due_on %>
+      <% if todo.overdue? %>
+        <em>(overdue)</em>
+      <% end %>
+    </div>
+  <% end %>
 
 </div>

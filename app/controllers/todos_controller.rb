@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: %i[ show edit update destroy ]
+  before_action :set_todo, only: %i[ show edit update destroy toggle ]
 
   # GET /todos or /todos.json
   def index
@@ -34,6 +34,12 @@ class TodosController < ApplicationController
     end
   end
 
+  # PATCH /todos/:id/toggle
+  def toggle
+    @todo.update!(completed: !@todo.completed)
+    redirect_to todos_path, notice: "Todo was successfully updated.", status: :see_other
+  end
+
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
     respond_to do |format|
@@ -65,6 +71,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.expect(todo: [ :title, :completed ])
+      params.expect(todo: [ :title, :completed, :due_on ])
     end
 end

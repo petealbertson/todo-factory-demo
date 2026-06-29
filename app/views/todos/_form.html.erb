@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label :due_on, style: "display: block" %>
+    <%= form.date_field :due_on %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
