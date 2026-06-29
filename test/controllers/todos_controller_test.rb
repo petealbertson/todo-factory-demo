@@ -38,4 +38,50 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_equal "high", todo.priority
     assert_redirected_to todo_url(todo)
   end
+
+  test "create a todo with due_date" do
+    date = Date.current + 3
+
+    assert_difference("Todo.count") do
+      post todos_url, params: { todo: { title: "Scheduled", due_date: date } }
+    end
+
+    todo = Todo.last
+    assert_equal date, todo.due_date
+    assert_redirected_to todo_url(todo)
+  end
+
+  test "update a todo due_date" do
+    todo = Todo.create!(title: "Reschedule me")
+    date = Date.current + 5
+
+    patch todo_url(todo), params: { todo: { due_date: date } }
+
+    assert_redirected_to todo_url(todo)
+    assert_equal date, todo.reload.due_date
+  end
+
+  test "index sorts todos by due_date with nulls last" do
+    later = Todo.create!(title: "Later", due_date: Date.current + 2)
+    earlier = Todo.create!(title: "Earlier", due_date: Date.current + 1)
+    no_date = Todo.create!(title: "No date")
+
+    get todos_url
+    assert_response :success
+
+    later_pos = response.body.index("Later")
+    earlier_pos = response.body.index("Earlier")
+    no_date_pos = response.body.index("No date")
+
+    assert_operator earlier_pos, :<, later_pos
+    assert_operator later_pos, :<, no_date_pos
+  end
+
+  test "index marks overdue todos" do
+    overdue = Todo.create!(title: "Late", due_date: Date.current - 1, completed: false)
+
+    get todos_url
+    assert_response :success
+    assert_select "#todo_#{overdue.id}.overdue"
+  end
 end
