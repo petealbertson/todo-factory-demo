@@ -24,6 +24,7 @@ on:
           - review
           - fix
           - teardown
+          - resolve_conflicts
       target:
         description: "Issue or PR number"
         required: true
@@ -93,4 +94,28 @@ jobs:
         run: |
           echo "::add-mask::${FACTORY_DISPATCH_TOKEN}"
           cd ~/factory
+
+          # --- auto-update: pull latest factory-config, self-test, rollback on failure ---
+          # Workers pull the latest main before every dispatch, so they never run stale
+          # code. If the new code fails the self-test, the worker rolls back to the
+          # last-known-good SHA and proceeds with that — a broken push to main cannot
+          # brick a worker. git pull output is masked off (may contain token-bearing
+          # URLs if origin was rewritten by factory_configure_github_token earlier,
+          # though it is not at this point).
+          OLD_SHA="$(git rev-parse HEAD)"
+          if git fetch origin main 2>/dev/null && git merge --ff-only origin/main 2>/dev/null; then
+            NEW_SHA="$(git rev-parse HEAD)"
+            if [ "$OLD_SHA" != "$NEW_SHA" ]; then
+              echo "factory-config updated: ${OLD_SHA:0:7} -> ${NEW_SHA:0:7}"
+              if ! bash run.sh selftest; then
+                echo "::warning::new factory-config failed self-test; rolling back to ${OLD_SHA:0:7}"
+                git reset --hard "$OLD_SHA"
+              else
+                echo "factory-config self-test passed"
+              fi
+            fi
+          else
+            echo "::warning::could not fetch/merge factory-config; running current HEAD (${OLD_SHA:0:7})"
+          fi
+
           bash run.sh
