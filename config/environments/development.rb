@@ -4,8 +4,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Allow the exe.dev HTTPS proxy hostname (and subdomains) to reach the dev server.
-  config.hosts << "todo-list-factory.exe.xyz"
-  config.hosts << ".todo-list-factory.exe.xyz"
+  config.hosts << "todo-factory-demo.exe.xyz" unless config.hosts.include?("todo-factory-demo.exe.xyz")
+  config.hosts << ".todo-factory-demo.exe.xyz" unless config.hosts.include?(".todo-factory-demo.exe.xyz")
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
@@ -41,8 +41,8 @@ Rails.application.configure do
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
-  # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  # Use the exe.dev proxy hostname for links generated in mailer templates.
+  config.action_mailer.default_url_options = { host: "todo-factory-demo.exe.xyz", protocol: "https" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
