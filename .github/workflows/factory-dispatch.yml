@@ -75,6 +75,10 @@ on:
         description: "Automation plan feature branch to target as PR base; omit to target main"
         required: false
         type: string
+      session_id:
+        description: "Pi session ID to resume (for retrying a crashed run); defaults to run_id"
+        required: false
+        type: string
 
 concurrency:
   group: factory-dispatch-${{ github.event.inputs.run_id }}
@@ -99,6 +103,7 @@ jobs:
           FACTORY_GIT_AUTHOR_NAME: ${{ github.event.inputs.git_author_name }}
           FACTORY_GIT_AUTHOR_EMAIL: ${{ github.event.inputs.git_author_email }}
           FACTORY_BASE_BRANCH: ${{ github.event.inputs.base_branch }}
+          FACTORY_SESSION_ID: ${{ github.event.inputs.session_id }}
           GITHUB_ACTIONS: "true"
         run: |
           echo "::add-mask::${FACTORY_DISPATCH_TOKEN}"
