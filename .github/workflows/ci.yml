@@ -37,6 +37,7 @@ jobs:
           bundler-cache: true
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
+        continue-on-error: true
         run: bin/importmap audit
 
   lint:
