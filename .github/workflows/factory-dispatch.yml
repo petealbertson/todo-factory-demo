@@ -71,6 +71,10 @@ on:
         description: "JSON array of runner labels, e.g. [\"self-hosted\",\"owner/repo\"]"
         required: true
         type: string
+      base_branch:
+        description: "Automation plan feature branch to target as PR base; omit to target main"
+        required: false
+        type: string
 
 concurrency:
   group: factory-dispatch-${{ github.event.inputs.run_id }}
@@ -94,6 +98,7 @@ jobs:
           FACTORY_DISPATCH_TOKEN: ${{ github.event.inputs.dispatch_token }}
           FACTORY_GIT_AUTHOR_NAME: ${{ github.event.inputs.git_author_name }}
           FACTORY_GIT_AUTHOR_EMAIL: ${{ github.event.inputs.git_author_email }}
+          FACTORY_BASE_BRANCH: ${{ github.event.inputs.base_branch }}
           GITHUB_ACTIONS: "true"
         run: |
           echo "::add-mask::${FACTORY_DISPATCH_TOKEN}"
