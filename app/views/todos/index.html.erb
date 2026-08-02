@@ -6,6 +6,13 @@
 
 <h1>Todos</h1>
 
+<nav aria-label="Filter by priority">
+  <%= link_to "All", todos_path(priority: nil) %> |
+  <%= link_to "High", todos_path(priority: "high") %> |
+  <%= link_to "Medium", todos_path(priority: "medium") %> |
+  <%= link_to "Low", todos_path(priority: "low") %>
+</nav>
+
 <p>Completed: <%= todos.count(&:completed?) %> of <%= todos.size %></p>
 
 <div id="todos">

@@ -3,7 +3,8 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.ordered
+    @todos = Todo.with_priority(params[:priority]).ordered
+    @current_priority = params[:priority].presence
   end
 
   # GET /todos/1 or /todos/1.json

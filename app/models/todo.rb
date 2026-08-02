@@ -1,6 +1,8 @@
 class Todo < ApplicationRecord
   enum :priority, { low: "low", medium: "medium", high: "high" }, default: :medium
 
+  scope :with_priority, ->(priority) { priority.present? ? where(priority: priority) : all }
+
   scope :ordered, -> {
     order(
       Arel.sql("due_date ASC NULLS LAST"),
