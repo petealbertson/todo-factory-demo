@@ -6,6 +6,13 @@
 
 <h1>Todos</h1>
 
+<p class="filters">
+  <%= link_to "All", todos_path %>
+  <% %w[high medium low].each do |priority| %>
+    <%= link_to priority.humanize, todos_path(priority: priority) %>
+  <% end %>
+</p>
+
 <p>Completed: <%= todos.count(&:completed?) %> of <%= todos.size %></p>
 
 <div id="todos">
