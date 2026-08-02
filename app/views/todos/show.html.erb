@@ -1,5 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+<% if @todo.description.present? %>
+  <div class="description">
+    <%= @todo.description.html_safe %>
+  </div>
+<% end %>
+
 <%= render @todo %>
 
 <div>
