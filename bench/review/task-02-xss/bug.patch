@@ -1,0 +1,27 @@
+diff --git a/app/views/todos/show.html.erb b/app/views/todos/show.html.erb
+index 66b1329..40e151f 100644
+--- a/app/views/todos/show.html.erb
++++ b/app/views/todos/show.html.erb
+@@ -1,5 +1,11 @@
+ <p style="color: green"><%= notice %></p>
+ 
++<% if @todo.description.present? %>
++  <div class="description">
++    <%= @todo.description.html_safe %>
++  </div>
++<% end %>
++
+ <%= render @todo %>
+ 
+ <div>
+diff --git a/db/migrate/20260802172910_add_description_to_todos.rb b/db/migrate/20260802172910_add_description_to_todos.rb
+new file mode 100644
+index 0000000..4d43737
+--- /dev/null
++++ b/db/migrate/20260802172910_add_description_to_todos.rb
+@@ -0,0 +1,5 @@
++class AddDescriptionToTodos < ActiveRecord::Migration[8.1]
++  def change
++    add_column :todos, :description, :text
++  end
++end

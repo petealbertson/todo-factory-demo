@@ -1,0 +1,33 @@
+diff --git a/app/controllers/todos_controller.rb b/app/controllers/todos_controller.rb
+index eeaf4ab..30fc93b 100644
+--- a/app/controllers/todos_controller.rb
++++ b/app/controllers/todos_controller.rb
+@@ -3,7 +3,11 @@ class TodosController < ApplicationController
+ 
+   # GET /todos or /todos.json
+   def index
+-    @todos = Todo.ordered
++    if params[:q].present?
++      @todos = Todo.where("title LIKE '%#{params[:q]}%'").ordered
++    else
++      @todos = Todo.ordered
++    end
+   end
+ 
+   # GET /todos/1 or /todos/1.json
+diff --git a/app/views/todos/index.html.erb b/app/views/todos/index.html.erb
+index 61f0f42..f6ff2b3 100644
+--- a/app/views/todos/index.html.erb
++++ b/app/views/todos/index.html.erb
+@@ -6,6 +6,11 @@
+ 
+ <h1>Todos</h1>
+ 
++<%= form_with url: todos_path, method: :get, local: true do |f| %>
++  <%= f.text_field :q, value: params[:q], placeholder: "Search todos by title..." %>
++  <%= f.submit "Search" %>
++<% end %>
++
+ <p>Completed: <%= todos.count(&:completed?) %> of <%= todos.size %></p>
+ 
+ <div id="todos">
