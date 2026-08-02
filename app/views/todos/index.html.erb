@@ -6,6 +6,11 @@
 
 <h1>Todos</h1>
 
+<%= form_with url: todos_path, method: :get, local: true do |f| %>
+  <%= f.text_field :q, value: params[:q], placeholder: "Search todos by title..." %>
+  <%= f.submit "Search" %>
+<% end %>
+
 <p>Completed: <%= todos.count(&:completed?) %> of <%= todos.size %></p>
 
 <div id="todos">
