@@ -2,6 +2,35 @@
 
 <%= render @todo %>
 
+<section id="notes">
+  <h2>Notes</h2>
+
+  <% @todo.notes.each do |note| %>
+    <div id="<%= dom_id(note) %>">
+      <%= note.body %>
+    </div>
+  <% end %>
+
+  <%= form_with model: [@todo, Note.new] do |form| %>
+    <% if form.object.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% form.object.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :body, "Add a note", style: "display: block" %>
+      <%= form.text_area :body %>
+    </div>
+
+    <%= form.submit "Add note" %>
+  <% end %>
+</section>
+
 <div>
   <%= link_to "Edit this todo", edit_todo_path(@todo) %> |
   <%= link_to "Back to todos", todos_path %>

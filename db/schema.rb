@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_29_181305) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_02_175224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "notes", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.bigint "todo_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todo_id"], name: "index_notes_on_todo_id"
+  end
 
   create_table "todos", force: :cascade do |t|
     t.boolean "completed"
@@ -22,4 +30,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_29_181305) do
     t.string "title"
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "notes", "todos"
 end
