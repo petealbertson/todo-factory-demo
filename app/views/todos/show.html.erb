@@ -1,6 +1,27 @@
 <p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
 
 <%= render @todo %>
+
+<section id="notes">
+  <h2>Notes</h2>
+
+  <div id="notes-list">
+    <%= render @todo.notes %>
+  </div>
+
+  <h3>Add a note</h3>
+  <%= form_with(model: [ @todo, Note.new ], local: true) do |form| %>
+    <div>
+      <%= form.label :body, style: "display: block" %>
+      <%= form.text_area :body %>
+    </div>
+
+    <div>
+      <%= form.submit "Add note" %>
+    </div>
+  <% end %>
+</section>
 
 <div>
   <%= link_to "Edit this todo", edit_todo_path(@todo) %> |

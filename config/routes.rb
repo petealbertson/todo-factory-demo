@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       patch :toggle
     end
+    resources :notes, only: %i[create]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
