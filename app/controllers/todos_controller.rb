@@ -6,6 +6,17 @@ class TodosController < ApplicationController
     @todos = Todo.ordered
   end
 
+  # GET /stats.json
+  def stats
+    render json: todo_stats
+  end
+
+  # GET /dashboard
+  def dashboard
+    @todos = Todo.ordered
+    @stats = todo_stats
+  end
+
   # GET /todos/1 or /todos/1.json
   def show
   end
@@ -71,6 +82,14 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.expect(todo: [ :title, :completed, :due_date, :priority ])
+      params.expect(todo: [ :title, :completed, :due_date, :priority, :tag_names ])
+    end
+
+    def todo_stats
+      {
+        total: Todo.count,
+        completed: Todo.where(completed: true).count,
+        overdue: Todo.all.select { |todo| todo.overdue? }.size
+      }
     end
 end

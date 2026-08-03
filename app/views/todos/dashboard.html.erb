@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Dashboard" %>
+
+<h1>Dashboard</h1>
+
+<p>
+  Total: <%= @stats[:total] %> |
+  Completed: <%= @stats[:completed] %> |
+  Overdue: <%= @stats[:overdue] %>
+</p>
+
+<div id="todos">
+  <% @todos.each do |todo| %>
+    <%= render todo %>
+    <p>
+      <%= link_to "Show this todo", todo %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "All todos", todos_path %>
