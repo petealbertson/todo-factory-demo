@@ -1,4 +1,6 @@
 class Todo < ApplicationRecord
+  has_many :tags, dependent: :destroy
+
   enum :priority, { low: "low", medium: "medium", high: "high" }, default: :medium
 
   scope :ordered, -> {

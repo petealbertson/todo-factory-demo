@@ -28,4 +28,12 @@
     </div>
   <% end %>
 
+  <% if todo.tags.any? %>
+    <div class="tags">
+      <% todo.tags.each do |tag| %>
+        <span class="tag"><%= tag.name %></span>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>

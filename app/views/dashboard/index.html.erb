@@ -1,0 +1,14 @@
+<%= content_for(:title, "Dashboard") %>
+
+<h1>Dashboard</h1>
+
+<section class="stats-summary">
+  <p>Total: <strong><%= @total %></strong></p>
+  <p>Completed: <strong><%= @completed %></strong></p>
+  <p>Overdue: <strong><%= @overdue %></strong></p>
+</section>
+
+<section class="todos">
+  <h2>Todos</h2>
+  <%= render partial: "todos/todo", collection: @todos, as: :todo %>
+</section>
