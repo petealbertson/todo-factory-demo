@@ -2,15 +2,21 @@
 
 <% content_for :title, "Todos" %>
 
-<% todos = @todos.to_a %>
+<% todos = @todos.with_status(active_todo_status).to_a %>
 
 <h1>Todos</h1>
 
 <nav aria-label="Filter by priority">
-  <%= link_to "High", todos_path(priority: "high") %>
-  <%= link_to "Medium", todos_path(priority: "medium") %>
-  <%= link_to "Low", todos_path(priority: "low") %>
-  <%= link_to "All", todos_path %>
+  <%= link_to "High", todos_path(priority: "high", status: active_todo_status) %>
+  <%= link_to "Medium", todos_path(priority: "medium", status: active_todo_status) %>
+  <%= link_to "Low", todos_path(priority: "low", status: active_todo_status) %>
+  <%= link_to "All", todos_path(status: active_todo_status) %>
+</nav>
+
+<nav aria-label="Filter by status">
+  <%= link_to "Open", todos_path(status: "open", priority: active_todo_priority) %>
+  <%= link_to "Completed", todos_path(status: "completed", priority: active_todo_priority) %>
+  <%= link_to "All", todos_path(priority: active_todo_priority) %>
 </nav>
 
 <p>Completed: <%= todos.count(&:completed?) %> of <%= todos.size %></p>
