@@ -9,6 +9,14 @@ class Todo < ApplicationRecord
     )
   }
 
+  scope :with_status, ->(status) {
+    case status
+    when "open" then where(completed: false)
+    when "completed" then where(completed: true)
+    else all
+    end
+  }
+
   def overdue?
     due_date.present? && !completed? && due_date < Date.current
   end

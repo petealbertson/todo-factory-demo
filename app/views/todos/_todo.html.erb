@@ -6,6 +6,11 @@
   </div>
 
   <div>
+    <strong>Created:</strong>
+    <%= time_tag todo.created_at, "#{time_ago_in_words(todo.created_at)} ago" %>
+  </div>
+
+  <div>
     <strong>Completed:</strong>
     <%= todo.completed %>
     <%= button_to "Toggle complete", toggle_todo_path(todo),

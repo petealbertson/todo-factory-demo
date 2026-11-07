@@ -1,6 +1,8 @@
 require "test_helper"
 
 class TodosTest < ActionDispatch::IntegrationTest
+  setup { Todo.delete_all }
+
   test "index renders completed count summary" do
     Todo.create!(title: "Finished todo", completed: true)
     Todo.create!(title: "Unfinished todo", completed: false)

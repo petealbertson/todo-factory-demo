@@ -3,7 +3,12 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.ordered
+    @sort = params[:sort] == "title" ? "title" : nil
+    @query = params[:q].is_a?(String) ? params[:q].strip.presence : nil
+    @todos = Todo.ordered.with_status(params[:status])
+    @todos = @todos.reorder(Arel.sql("LOWER(title) ASC"), id: :asc) if @sort
+    @todos = @todos.where("title ILIKE ?", "%#{Todo.sanitize_sql_like(@query)}%") if @query
+    @todos = @todos.where(priority: params[:priority]) if Todo.priorities.key?(params[:priority])
   end
 
   # GET /todos/1 or /todos/1.json
