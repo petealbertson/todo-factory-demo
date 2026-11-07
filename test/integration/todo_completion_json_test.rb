@@ -17,6 +17,7 @@ class TodoCompletionJsonTest < ActionDispatch::IntegrationTest
 
   test "JSON missing and invalid filters retain all matching records" do
     assert_ids [ @open_high, @done_high ], priority: "high"
+    assert_ids [ @open_high, @done_high ], status: "all", priority: "high"
     assert_ids [ @open_high, @done_high ], status: "invalid", priority: "high"
     assert_ids [ @open_high, @open_low ], status: "open", priority: "invalid"
     assert_ids [ @open_high, @done_high, @open_low ]
