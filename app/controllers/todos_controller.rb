@@ -3,7 +3,9 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
+    @query = params[:q].is_a?(String) ? params[:q].strip.presence : nil
     @todos = Todo.ordered.with_status(params[:status])
+    @todos = @todos.where("title ILIKE ?", "%#{Todo.sanitize_sql_like(@query)}%") if @query
     @todos = @todos.where(priority: params[:priority]) if Todo.priorities.key?(params[:priority])
   end
 

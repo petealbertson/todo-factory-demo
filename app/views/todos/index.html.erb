@@ -6,17 +6,25 @@
 
 <h1>Todos</h1>
 
+<%= form_with url: todos_path, method: :get do |form| %>
+  <%= form.label :q, "Search titles" %>
+  <%= form.search_field :q, value: @query %>
+  <%= form.hidden_field :status, value: active_todo_status if active_todo_status %>
+  <%= form.hidden_field :priority, value: active_todo_priority if active_todo_priority %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <nav aria-label="Filter by priority">
-  <%= link_to "High", todos_path(priority: "high", status: active_todo_status) %>
-  <%= link_to "Medium", todos_path(priority: "medium", status: active_todo_status) %>
-  <%= link_to "Low", todos_path(priority: "low", status: active_todo_status) %>
-  <%= link_to "All", todos_path(status: active_todo_status) %>
+  <%= link_to "High", todos_path(priority: "high", status: active_todo_status, q: @query) %>
+  <%= link_to "Medium", todos_path(priority: "medium", status: active_todo_status, q: @query) %>
+  <%= link_to "Low", todos_path(priority: "low", status: active_todo_status, q: @query) %>
+  <%= link_to "All", todos_path(status: active_todo_status, q: @query) %>
 </nav>
 
 <nav aria-label="Filter by status">
-  <%= link_to "Open", todos_path(status: "open", priority: active_todo_priority) %>
-  <%= link_to "Completed", todos_path(status: "completed", priority: active_todo_priority) %>
-  <%= link_to "All", todos_path(priority: active_todo_priority) %>
+  <%= link_to "Open", todos_path(status: "open", priority: active_todo_priority, q: @query) %>
+  <%= link_to "Completed", todos_path(status: "completed", priority: active_todo_priority, q: @query) %>
+  <%= link_to "All", todos_path(priority: active_todo_priority, q: @query) %>
 </nav>
 
 <p>Completed: <%= todos.count(&:completed?) %> of <%= todos.size %></p>
