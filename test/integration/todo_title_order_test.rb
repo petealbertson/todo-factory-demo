@@ -5,7 +5,7 @@ class TodoTitleOrderTest < ActionDispatch::IntegrationTest
     Todo.delete_all
     @zebra = Todo.create!(title: "Zebra", priority: :high, due_date: Date.yesterday)
     @alpha = Todo.create!(title: "alpha", priority: :low)
-    @tie = Todo.create!(title: "ALPHA", priority: :high)
+    @tie = Todo.create!(title: "ALPHA", priority: :high, completed: false)
   end
 
   test "title ordering is case insensitive with id ties in HTML and JSON" do
