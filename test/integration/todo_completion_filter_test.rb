@@ -19,7 +19,7 @@ class TodoCompletionFilterTest < ActionDispatch::IntegrationTest
     assert_select "#todos", text: /#{done_todo.title}/
     assert_select "#todos", text: /#{open_todo.title}/, count: 0
 
-    [nil, "invalid"].each do |status|
+    [ nil, "invalid" ].each do |status|
       get todos_path, params: { status: status, priority: "high" }
       assert_select "#todos", text: /#{open_todo.title}/
       assert_select "#todos", text: /#{done_todo.title}/
